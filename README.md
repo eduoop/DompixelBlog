@@ -54,13 +54,17 @@ Depois, rode o frontend em um outro terminal na pasta do projeto, usando: <yarn 
 
 ## Dificuldades
 
-Durante o processo de desenvolvimento, enfrentei algumas dificuldades. A principal delas foi a falta de tempo, que resultou em uma falta de refinamentos em algumas partes do projeto. Devido aos meus dois trabalhos, consegui pouco tempo para mexer na aplicação, o que limitou minha capacidade de implementar melhorias e ajustes que gostaria de ter feito.
+Durante o processo de desenvolvimento, enfrentei algumas dificuldades. A principal delas foi a falta de tempo, que resultou em uma falta de refinamentos em algumas partes do projeto. Devido aos meus trabalhos, consegui pouco tempo para mexer na aplicação, o que limitou minha capacidade de implementar melhorias e ajustes que gostaria de ter feito. 
+
+Além disso, tive desafios ao fazer o deploy do projeto, já que utilizei o **json-server** para simular a API, e não consegui encontrar uma solução viável para realizar o deploy com essa configuração. 
+
+Apesar dessas dificuldades, peço uma oportunidade para que possam rodar o projeto e ver como ele funciona na prática.
 
 ## Tecnologias Utilizadas
 
 - **Next.js** (v14.2.3)
 - **Json-server** (v0.17.4)
-- **React** (v18.2.0)
+- **React** (v18)
 - **Tailwind CSS** (v3.4.1)
 - **TypeScript** (v5.0.0)
 
