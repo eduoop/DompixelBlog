@@ -48,7 +48,8 @@ NEXT_PUBLIC_API_BASE_URL="http://localhost:3333"
 ## ☕ Usando
 
 ```
-para rodar o projeto, use: <yarn dev ou npm run dev> para rodar o frontend e <yarn api ou npm run dev> para rodar a api
+Para rodar o projeto, abra um terminal na pasta do projeto e rode a api, use: <yarn api ou npm run api>
+Depois, rode o frontend usando: <yarn dev ou npm run dev>
 ```
 
 ## Dificuldades
