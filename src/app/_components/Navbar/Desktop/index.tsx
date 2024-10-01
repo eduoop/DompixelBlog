@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button } from "@mantine/core";
 import {
@@ -10,17 +12,20 @@ import {
   FiSettings,
   FiGrid,
 } from "react-icons/fi";
+import { usePathname } from "next/navigation";
 
 function Desktop() {
+  const pathname = usePathname();
+
   const menuItems = [
-    { name: "Home", icon: <FiHome /> },
-    { name: "Search", icon: <FiSearch /> },
-    { name: "Notifications", icon: <FiBell /> },
-    { name: "Chat", icon: <FiMessageSquare /> },
-    { name: "Feeds", icon: <FiGrid /> },
-    { name: "Lists", icon: <FiList /> },
-    { name: "Profile", icon: <FiUser /> },
-    { name: "Settings", icon: <FiSettings /> },
+    { name: "Home", icon: <FiHome />, path: "/" },
+    { name: "Search", icon: <FiSearch />, path: "/search" },
+    { name: "Notifications", icon: <FiBell />, path: "/notifications" },
+    { name: "Chat", icon: <FiMessageSquare />, path: "/chat" },
+    { name: "Feeds", icon: <FiGrid />, path: "/feeds" },
+    { name: "Lists", icon: <FiList />, path: "/lists" },
+    { name: "Profile", icon: <FiUser />, path: "/profile" },
+    { name: "Settings", icon: <FiSettings />, path: "/settings" },
   ];
 
   return (
@@ -29,8 +34,10 @@ function Desktop() {
         {menuItems.map((item) => (
           <li key={item.name}>
             <Button
-              variant="subtle"
-              className="text-white w-full hover:text-blue-500/80 flex items-center justify-start space-x-2 text-base rounded-lg py-4 h-[50px]"
+              variant={pathname === item.path ? "filled" : "subtle"}
+              className={`text-white w-full flex items-center justify-start space-x-2 text-base rounded-lg py-4 h-[50px] ${
+                pathname === item.path ? "bg-blue-500" : "hover:bg-blue-500/20"
+              }`}
               leftSection={item.icon}
             >
               {item.name}

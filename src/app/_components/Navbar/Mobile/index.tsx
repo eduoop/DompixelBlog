@@ -1,16 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { TextInput, Button, Drawer, Burger, ActionIcon } from "@mantine/core";
 import {
-  TextInput,
-  Button,
-  Drawer,
-  Burger,
-  Group,
-  ActionIcon,
-} from "@mantine/core";
-import {
-  FiMenu,
   FiHome,
   FiSearch,
   FiBell,
@@ -21,21 +13,23 @@ import {
   FiSettings,
 } from "react-icons/fi";
 import { FiBell as BellIcon } from "react-icons/fi";
+import { usePathname } from "next/navigation";
 
 const menuItems = [
-  { name: "Home", icon: <FiHome /> },
-  { name: "Search", icon: <FiSearch /> },
-  { name: "Notifications", icon: <FiBell /> },
-  { name: "Chat", icon: <FiMessageSquare /> },
-  { name: "Feeds", icon: <FiGrid /> },
-  { name: "Lists", icon: <FiList /> },
-  { name: "Profile", icon: <FiUser /> },
-  { name: "Settings", icon: <FiSettings /> },
+  { name: "Home", icon: <FiHome />, path: "/" },
+  { name: "Search", icon: <FiSearch />, path: "/search" },
+  { name: "Notifications", icon: <FiBell />, path: "/notifications" },
+  { name: "Chat", icon: <FiMessageSquare />, path: "/chat" },
+  { name: "Feeds", icon: <FiGrid />, path: "/feeds" },
+  { name: "Lists", icon: <FiList />, path: "/lists" },
+  { name: "Profile", icon: <FiUser />, path: "/profile" },
+  { name: "Settings", icon: <FiSettings />, path: "/settings" },
 ];
 
 export default function CustomMenu() {
   const [opened, setOpened] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const pathname = usePathname();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.currentTarget.value);
@@ -44,7 +38,6 @@ export default function CustomMenu() {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center p-4 bg-foreground text-white">
-        {/* Ícone principal à esquerda */}
         <ActionIcon size="lg" variant="light">
           <BellIcon size={24} />
         </ActionIcon>
@@ -79,7 +72,6 @@ export default function CustomMenu() {
           },
         }}
       >
-        {/* Campo de pesquisa */}
         <TextInput
           value={searchQuery}
           onChange={handleSearchChange}
@@ -97,13 +89,14 @@ export default function CustomMenu() {
           }}
         />
 
-        {/* Menu de opções dentro do Drawer */}
         <ul className="space-y-4">
           {menuItems.map((item) => (
             <li key={item.name}>
               <Button
-                variant="subtle"
-                className="text-white w-full hover:text-blue-500 flex items-center justify-start space-x-2"
+                variant={pathname === item.path ? "filled" : "subtle"} 
+                className={`text-white w-full flex items-center justify-start space-x-2 ${
+                  pathname === item.path ? "bg-blue-500" : ""
+                }`}
                 leftSection={item.icon}
               >
                 {item.name}
