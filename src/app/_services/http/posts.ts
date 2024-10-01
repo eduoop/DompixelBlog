@@ -3,10 +3,11 @@
 import { revalidatePath } from "next/cache";
 
 export interface Post {
-  id: number;
+  id: string;
   title: string;
   date: string;
   image: string;
+  description: string
   slug: string;
   contentImages?: string[];
 }
@@ -41,6 +42,19 @@ export async function createPost(postData: Post): Promise<Post> {
   }
 
   revalidatePath('/');
+
+  const data = await response.json();
+  return data;
+}
+
+export async function getPost(postId: string): Promise<Post> {
+  const response = await fetch(`${apiUrl}/posts/${postId}`);
+
+  console.log(response)
+
+  if (!response.ok) {
+    throw new Error("Erro ao buscar a postagem");
+  }
 
   const data = await response.json();
   return data;

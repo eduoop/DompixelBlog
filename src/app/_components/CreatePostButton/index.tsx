@@ -46,7 +46,7 @@ function CreatePostButton() {
       ...(form.values.contentImages as any),
       url,
     ]);
-    setImageUrl(""); // Limpa o campo após adicionar a imagem
+    setImageUrl("");
   };
 
   const removeContentImage = (url: string) => {
@@ -61,7 +61,6 @@ function CreatePostButton() {
     }
   };
 
-  // Função para gerar o slug automaticamente a partir do título
   const generateSlug = (title: string) => {
     return title
       .toLowerCase()
@@ -82,18 +81,17 @@ function CreatePostButton() {
       ...values,
       slug,
       date,
-      id: Date.now(),
+      id: JSON.stringify(Date.now()),
     };
 
     try {
       const createdPost = await createPost(postData);
       console.log("Post criado:", createdPost);
 
-      form.reset(); // Reseta os valores do formulário
-      setContentImages([]); // Limpa as imagens de conteúdo
-      setImageUrl(""); // Limpa o campo de URL da imagem
+      form.reset();
+      setContentImages([]);
+      setImageUrl("");
 
-      // Fecha o modal
       setOpened(false);
     } catch (error) {
       console.error(error);
@@ -135,7 +133,6 @@ function CreatePostButton() {
               }}
             />
 
-            {/* Adicionando o campo de descrição */}
             <Textarea
               label="Descrição"
               placeholder="Descrição da Postagem"
@@ -163,8 +160,8 @@ function CreatePostButton() {
                 <TextInput
                   label="URL da Imagem de Conteúdo"
                   placeholder="https://via.placeholder.com/350"
-                  value={imageUrl} // Use o estado controlado
-                  onChange={(e) => setImageUrl(e.currentTarget.value)} // Atualiza o estado
+                  value={imageUrl} 
+                  onChange={(e) => setImageUrl(e.currentTarget.value)} 
                   className="w-full"
                   classNames={{
                     label: "text-white",

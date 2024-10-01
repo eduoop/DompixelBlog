@@ -1,12 +1,13 @@
 import { Suspense } from "react";
 import { getPosts } from "../_services/http/posts";
 import ListPosts from "./_components/ListPosts";
+import PageSkeleton from "./_components/PageSkeleton";
 
 export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <Suspense fallback={<h1 className="text-3xl font-bold">Carregando...</h1>}>
+    <Suspense fallback={<PageSkeleton />}>
       <ListPosts posts={posts} />
     </Suspense>
   );
