@@ -13,6 +13,7 @@ import {
   FiGrid,
 } from "react-icons/fi";
 import { usePathname } from "next/navigation";
+import CreatePostButton from "../../CreatePostButton";
 
 function Desktop() {
   const pathname = usePathname();
@@ -36,7 +37,7 @@ function Desktop() {
             <Button
               variant={pathname === item.path ? "filled" : "subtle"}
               className={`text-white w-full flex items-center justify-start space-x-2 text-base rounded-lg py-4 h-[50px] ${
-                pathname === item.path ? "bg-blue-500" : "hover:bg-blue-500/20"
+                pathname === item.path ? "bg-blue-500/70" : "hover:bg-blue-500/20"
               }`}
               leftSection={item.icon}
             >
@@ -44,6 +45,9 @@ function Desktop() {
             </Button>
           </li>
         ))}
+        <li>
+          <CreatePostButton />
+        </li>
       </ul>
     </nav>
   );

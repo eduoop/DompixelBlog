@@ -1,23 +1,26 @@
-"use client"
+"use client";
 
-import { Post } from '@/app/_services/http/posts';
-import React from 'react';
-import { Card, Image, Text } from '@mantine/core';
-import { useRouter } from 'next/navigation';
+import { Post } from "@/app/_services/http/posts";
+import React from "react";
+import { Card, Image, Text } from "@mantine/core";
+import { useRouter } from "next/navigation";
 
 interface PostCardProps {
-    post: Post;
+  post: Post;
 }
 
 function PostCard({ post }: PostCardProps) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/posts/${post.slug}`);
+    router.push(`/blog/${post.id}`);
   };
 
   return (
-    <Card onClick={handleClick} className="cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Card
+      onClick={handleClick}
+      className="cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300"
+    >
       <Image src={post.image} alt={post.title} className="rounded-lg" />
       <Text size="lg" mt="md" className="text-gray-800">
         {post.title}

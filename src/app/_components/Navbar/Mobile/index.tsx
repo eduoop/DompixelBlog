@@ -14,6 +14,7 @@ import {
 } from "react-icons/fi";
 import { FiBell as BellIcon } from "react-icons/fi";
 import { usePathname } from "next/navigation";
+import CreatePostButton from "../../CreatePostButton";
 
 const menuItems = [
   { name: "Home", icon: <FiHome />, path: "/" },
@@ -95,7 +96,7 @@ export default function CustomMenu() {
               <Button
                 variant={pathname === item.path ? "filled" : "subtle"} 
                 className={`text-white w-full flex items-center justify-start space-x-2 ${
-                  pathname === item.path ? "bg-blue-500" : ""
+                  pathname === item.path ? "bg-blue-500/70" : ""
                 }`}
                 leftSection={item.icon}
               >
@@ -103,6 +104,7 @@ export default function CustomMenu() {
               </Button>
             </li>
           ))}
+          <li><CreatePostButton/></li>
         </ul>
       </Drawer>
     </div>

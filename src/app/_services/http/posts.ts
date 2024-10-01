@@ -1,3 +1,5 @@
+'use server'
+
 import { revalidatePath } from "next/cache";
 
 export interface Post {
@@ -6,7 +8,7 @@ export interface Post {
   date: string;
   image: string;
   slug: string;
-  contentImages: string[];
+  contentImages?: string[];
 }
 
 type PostsResponse = Post[];
@@ -21,6 +23,25 @@ export async function getPosts(): Promise<PostsResponse> {
   }
 
   revalidatePath('/')
+  const data = await response.json();
+  return data;
+}
+
+export async function createPost(postData: Post): Promise<Post> {
+  const response = await fetch(`${apiUrl}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(postData),
+  });
+
+  if (!response.ok) {
+    throw new Error("Erro ao criar a postagem");
+  }
+
+  revalidatePath('/');
+
   const data = await response.json();
   return data;
 }
