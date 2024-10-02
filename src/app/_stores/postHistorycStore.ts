@@ -21,8 +21,10 @@ export const usePostHistoryStore = create(
             ? state.posts.filter((post) => post.id !== newPost.id)
             : state.posts;
 
+          const newPosts = [newPost, ...updatedPosts].slice(0, 5);
+
           return {
-            posts: [newPost, ...updatedPosts],
+            posts: newPosts,
           };
         });
       },
