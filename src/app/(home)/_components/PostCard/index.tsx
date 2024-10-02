@@ -34,8 +34,7 @@ function PostCard({ post }: PostCardProps) {
       <Text
         size="lg"
         mt="md"
-        className="text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis group-hover:block font-semibold"
-        style={{ display: "block" }}
+        className="text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis group-hover:block font-semibold block"
       >
         {post.title}
       </Text>
