@@ -13,6 +13,7 @@ import { FiEdit2, FiPlus, FiTrash } from "react-icons/fi";
 import { z } from "zod";
 import Image from "next/image";
 import { createPost } from "@/app/_services/http/posts";
+import { notifications } from "@mantine/notifications";
 
 const postSchema = z.object({
   title: z.string().min(5, "O título deve ter pelo menos 5 caracteres"),
@@ -93,6 +94,11 @@ function CreatePostButton() {
       setImageUrl("");
 
       setOpened(false);
+      notifications.show({
+        title: "Postagem Criada!",
+        message: "Sua postagem foi criada com sucesso.",
+        color: "green",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -160,8 +166,8 @@ function CreatePostButton() {
                 <TextInput
                   label="URL da Imagem de Conteúdo"
                   placeholder="Adicione a URl de uma ou mais imagens"
-                  value={imageUrl} 
-                  onChange={(e) => setImageUrl(e.currentTarget.value)} 
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.currentTarget.value)}
                   className="w-full"
                   classNames={{
                     label: "text-white",
