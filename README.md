@@ -34,7 +34,7 @@ Linux, macOS e Windows:
 ## 3. Instale as dependências usando o yarn:
 
 ```
-<yarn>
+<yarn ou npm i>
 ```
 
 ### 4. Crie um arquivo `.env`:
@@ -48,7 +48,7 @@ NEXT_PUBLIC_API_BASE_URL="http://localhost:3333"
 ## ☕ Usando
 
 ```
-para rodar o projeto, use: <yarn dev> para rodar o frontend e <yarn api> para rodar a api
+para rodar o projeto, use: <yarn dev ou npm run dev> para rodar o frontend e <yarn api ou npm run dev> para rodar a api
 ```
 
 ## Dificuldades
