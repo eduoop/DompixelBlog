@@ -31,7 +31,7 @@ Linux, macOS e Windows:
 <cd DompixelBlog>
 ```
 
-## 3. Instale as dependências usando o yarn:
+## 3. Instale as dependências usando o yarn ou npm:
 
 ```
 <yarn ou npm i>
