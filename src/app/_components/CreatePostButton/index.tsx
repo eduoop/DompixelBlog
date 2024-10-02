@@ -86,8 +86,7 @@ function CreatePostButton() {
     };
 
     try {
-      const createdPost = await createPost(postData);
-      console.log("Post criado:", createdPost);
+      await createPost(postData);
 
       form.reset();
       setContentImages([]);
