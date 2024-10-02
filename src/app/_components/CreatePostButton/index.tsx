@@ -146,7 +146,7 @@ function CreatePostButton() {
 
             <TextInput
               label="URL da capa"
-              placeholder="https://via.placeholder.com/150"
+              placeholder="Adicione a URl de uma imagem"
               {...form.getInputProps("image")}
               classNames={{
                 label: "text-white",
@@ -159,7 +159,7 @@ function CreatePostButton() {
               <div className="flex items-center w-full">
                 <TextInput
                   label="URL da Imagem de Conteúdo"
-                  placeholder="https://via.placeholder.com/350"
+                  placeholder="Adicione a URl de uma ou mais imagens"
                   value={imageUrl} 
                   onChange={(e) => setImageUrl(e.currentTarget.value)} 
                   className="w-full"

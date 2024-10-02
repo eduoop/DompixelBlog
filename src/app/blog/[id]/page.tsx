@@ -17,14 +17,14 @@ async function Blog({ params }: BlogProps) {
 
   return (
     <Suspense fallback={<PageSkeleton />}>
-      <div className="container mx-auto p-4 py-6">
+      <div className="container mx-auto md:p-4 py-6">
         <Link
           href="/"
-          className="flex items-center mb-4 text-gray-800 hover:text-gray-600 transition-colors duration-200"
+          className="flex items-center mb-4 text-gray-800 hover:text-gray-600 transition-colors duration-200 w-fit"
         >
           <IoArrowBack className="text-white" size={30} />
         </Link>
-        <Card className="mb-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <Card className="mb-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white/90">
           <div className="relative w-full h-[300px]">
             <Image
               src={blog.image}
@@ -40,13 +40,13 @@ async function Blog({ params }: BlogProps) {
           <Text size="sm" className="text-gray-600">
             {new Date(blog.date).toLocaleDateString()}
           </Text>
-          <Text mt="md" className="text-gray-700">
+          <Text mt="md" size="lg" className="text-gray-700 whitespace-pre-line">
             {blog.description}
           </Text>
         </Card>
 
         {blog.contentImages && (
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {blog.contentImages.map((image: string, index: number) => (
               <div
                 key={index}

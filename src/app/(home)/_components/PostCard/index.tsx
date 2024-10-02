@@ -20,7 +20,7 @@ function PostCard({ post }: PostCardProps) {
   return (
     <Card
       onClick={handleClick}
-      className="cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-102 group"
+      className="cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-102 group bg-white/90"
     >
       <div className="relative w-full h-[200px] overflow-hidden rounded-lg">
         <Image
@@ -31,11 +31,11 @@ function PostCard({ post }: PostCardProps) {
           className="rounded-lg transition-transform duration-300 hover:scale-105"
         />
       </div>
-      <Text 
-        size="lg" 
-        mt="md" 
-        className="text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis group-hover:block"
-        style={{ display: 'block' }}
+      <Text
+        size="lg"
+        mt="md"
+        className="text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis group-hover:block font-semibold"
+        style={{ display: "block" }}
       >
         {post.title}
       </Text>

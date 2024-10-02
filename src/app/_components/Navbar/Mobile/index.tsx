@@ -15,6 +15,9 @@ import {
 import { FiBell as BellIcon } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import CreatePostButton from "../../CreatePostButton";
+import SearchInput from "../../SearchInput";
+import { PiNewspaper } from "react-icons/pi";
+import { useRouter } from "next/navigation";
 
 const menuItems = [
   { name: "Home", icon: <FiHome />, path: "/" },
@@ -29,18 +32,14 @@ const menuItems = [
 
 export default function CustomMenu() {
   const [opened, setOpened] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.currentTarget.value);
-  };
+  const navigate = useRouter()
 
   return (
     <div className="w-full">
       <div className="flex justify-between items-center p-4 bg-foreground text-white">
-        <ActionIcon size="lg" variant="light">
-          <BellIcon size={24} />
+        <ActionIcon size="lg" variant="light" onClick={() => navigate.push("/")}>
+          <PiNewspaper size={24} />
         </ActionIcon>
 
         <Burger
@@ -73,24 +72,9 @@ export default function CustomMenu() {
           },
         }}
       >
-        <TextInput
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Search"
-          rightSection={<FiSearch />}
-          className="mb-4"
-          radius="md"
-          size="md"
-          styles={{
-            input: {
-              backgroundColor: "#1A1B1E",
-              border: "1px solid #2C2E33",
-              color: "white",
-            },
-          }}
-        />
+        <SearchInput onClickResult={() => setOpened(false)} />
 
-        <ul className="space-y-4">
+        <ul className="space-y-4 mt-4">
           {menuItems.map((item) => (
             <li key={item.name}>
               <Button
